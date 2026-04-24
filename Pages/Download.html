@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Download | Nimo's Gaming</title>
 
-    <link rel="stylesheet" href="../CSS/Game-system.css">
+    <link rel="stylesheet" href="../CSS/Download.css">
 </head>
 
 <body>
@@ -15,18 +15,18 @@
     <header>
         <div class="container header-container">
             <div class="logo">
-                <a href="../Core Pages ( Main Navigation)/index.html">
-                    <img src="../Icon/canva-dark-abstract-black-panther.jpg" alt="Nimo's Gaming">
+                <a href="../index.html">
+                    <img src="../icon/canva-dark-abstract-black-panther.jpg" alt="Nimo's Gaming">
                 </a>
             </div>
 
             <nav>
                 <ul class="nav-links">
-                    <li><a href="../Core Pages ( Main Navigation)/index.html">Home</a></li>
-                    <li><a href="../Core Pages ( Main Navigation)/android.html">Android</a></li>
-                    <li><a href="../Core Pages ( Main Navigation)/ppsspp.html">PPSSPP</a></li>
-                    <li><a href="../Core Pages ( Main Navigation)/ps2.html">PS2</a></li>
-                    <li><a href="../Game System Pages/Download.html" class="active">Download</a></li>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="./android.html">Android</a></li>
+                    <li><a href="./ppsspp.html">PPSSPP</a></li>
+                    <li><a href="./ps2.html">PS2</a></li>
+                    <li><a href="./Download.html" class="active">Download</a></li>
                 </ul>
             </nav>
         </div>
@@ -59,7 +59,7 @@
                 <div class="empty-state" id="download-empty">
                     <h3>No downloads available yet 😔</h3>
                     <p>Games will appear here once added to the system.</p>
-                    <a href="../Game System Pages/request.html" class="btn">Request a Game</a>
+                    <a href="./request.html" class="btn">Request a Game</a>
                 </div>
 
                 <!-- JS WILL INJECT DOWNLOAD CARDS HERE -->
@@ -93,11 +93,11 @@
         <div class="container footer-container">
 
             <div class="footer-links">
-                <a href="../Support Pages/about-us.html">About Us</a>
-                <a href="../Support Pages/contact.html">Contact</a>
-                <a href="../Game System Pages/request.html">Request a Game</a>
-                <a href="../Legal Pages/privacy-policy.html">Privacy Policy</a>
-                <a href="../Legal Pages/terms-of-service.html">Terms of Service</a>
+                <a href="./about-us.html">About Us</a>
+                <a href="./contact.html">Contact</a>
+                <a href="./request.html">Request a Game</a>
+                <a href="./privacy-policy.html">Privacy Policy</a>
+                <a href="./terms-of-service.html">Terms of Service</a>
             </div>
 
             <div class="footer-bottom">
@@ -109,6 +109,7 @@
 
     <!-- ================= JS SYSTEM ================= -->
     <script src="../JS/Data.js"></script>
+    <script src="../JS/download.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             if (window.gameDataLoaded && typeof window.gameDataLoaded.then === "function") {
