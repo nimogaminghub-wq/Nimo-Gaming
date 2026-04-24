@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Request new games to be added to Nimo's Gaming collection">
+    <meta name="keywords" content="request games, game requests, new games, add games">
+    <title>Request a Game | Nimo's Gaming</title>
+
+    <link rel="stylesheet" href="../CSS/Game-system.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../icon/canva-dark-abstract-black-panther.jpg" alt="Nimo's Gaming">
+                </a>
+            </div>
+
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="./android.html">Android</a></li>
+                    <li><a href="./ppsspp.html">PPSSPP</a></li>
+                    <li><a href="./ps2.html">PS2</a></li>
+                    <li><a href="./request.html" class="active">Request</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ================= PAGE HERO ================= -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Request a Game</h1>
+            <p>Can’t find your favorite game? Request it here 🎮</p>
+        </div>
+    </section>
+
+    <!-- ================= LEADERBOARD AD ================= -->
+    <section class='ad-banner ad-leaderboard'>
+        <div class='container'>
+            <div class='ad-placeholder'>
+                <span>Advertisement</span>
+                <div class='ad-content'>
+                    <p>728 x 90 Banner Ad</p>
+                    <p>Your ad here</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= REQUEST FORM ================= -->
+    <section class="games-section">
+        <div class="container">
+
+            <form class="request-form" id="request-form">
+
+                <label>Game Name</label>
+                <input type="text" id="game-name" placeholder="Enter game name" required>
+
+                <label>Platform</label>
+                <select id="game-platform" required>
+                    <option value="">Select platform</option>
+                    <option value="Android">Android</option>
+                    <option value="PPSSPP">PPSSPP (PSP)</option>
+                    <option value="PS2">PS2</option>
+                </select>
+
+                <label>Additional Notes (optional)</label>
+                <textarea id="game-notes" placeholder="Version, offline/online, size, etc."></textarea>
+
+                <button type="submit" class="btn">Submit Request</button>
+
+            </form>
+
+            <!-- SUCCESS MESSAGE (JS CONTROLLED) -->
+            <div id="success-message" style="display:none; margin-top:20px;">
+                <h3>✅ Request Sent Successfully!</h3>
+                <p>We will review your request and add the game soon.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= INFO SECTION (NEW FEATURE) ================= -->
+    <section class="install-guide">
+        <div class="container">
+            <h2>How Requests Work</h2>
+            <ol>
+                <li>Submit your game request</li>
+                <li>We review the request</li>
+                <li>If available, we add it to the site</li>
+                <li>You can then download it directly</li>
+            </ol>
+
+            <p><strong>⚠️ Note:</strong> Only request real games (no fake/spam requests).</p>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer>
+        <div class="container footer-container">
+
+            <div class="footer-links">
+                <a href="./about-us.html">About Us</a>
+                <a href="./contact.html">Contact</a>
+                <a href="./request.html">Request a Game</a>
+                <a href="./help.html">Help</a>
+                <a href="./privacy-policy.html">Privacy Policy</a>
+                <a href="./terms-of-service.html">Terms of Service</a>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 Nimo's Gaming. All Rights Reserved.</p>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- ================= JS (READY FOR LATER SYSTEM) ================= -->
+    <!-- All JS files removed except Gta.js -->
+
+    <script>
+        const requestForm = document.getElementById('request-form');
+        const successMessage = document.getElementById('success-message');
+
+        if (requestForm) {
+            requestForm.addEventListener('submit', event => {
+                event.preventDefault();
+                successMessage.style.display = 'block';
+                requestForm.reset();
+            });
+        }
+    </script>
+
+</body>
+
+</html>
+
+

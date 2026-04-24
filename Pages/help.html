@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Get help with downloading and installing games at Nimo's Gaming - FAQ and troubleshooting">
+    <meta name="keywords" content="help, faq, troubleshooting, download help, game installation">
+    <title>Help & FAQ | Nimo's Gaming</title>
+
+    <link rel="stylesheet" href="../CSS/Support.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../Icon/canva-dark-abstract-black-panther.jpg" alt="Nimo's Gaming">
+                </a>
+            </div>
+
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="./android.html">Android</a></li>
+                    <li><a href="./ppsspp.html">PPSSPP</a></li>
+                    <li><a href="./ps2.html">PS2</a></li>
+                    <li><a href="./help.html" class="active">Help</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ================= HERO ================= -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Help & Support</h1>
+            <p>Find answers to common issues and learn how to use the platform</p>
+        </div>
+    </section>
+
+    <!-- ================= HELP SECTIONS ================= -->
+    <section class="games-section">
+        <div class="container help-content">
+
+            <div class="faq-grid">
+
+                <div class="faq-item">
+                    <div class="faq-question">📱 Android Games</div>
+                    <div class="faq-answer">
+                        <ul>
+                            <li>Enable “Install Unknown Apps” before installing APK files.</li>
+                            <li>Check Android version compatibility if installation fails.</li>
+                            <li>Ensure enough storage before downloading large games.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">🎮 PPSSPP (PSP Games)</div>
+                    <div class="faq-answer">
+                        <ul>
+                            <li>Install the PPSSPP emulator before playing.</li>
+                            <li>Use ISO or CSO game formats only.</li>
+                            <li>Extract ZIP/RAR files before loading in emulator.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">🕹️ PS2 Games</div>
+                    <div class="faq-answer">
+                        <ul>
+                            <li>Use PCSX2 (PC) or AetherSX2 (Android).</li>
+                            <li>PS2 games are large — ensure sufficient storage.</li>
+                            <li>Configure BIOS and controls properly before playing.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">⚠️ Common Problems</div>
+                    <div class="faq-answer">
+                        <ul>
+                            <li>Download not working? Refresh and try again.</li>
+                            <li>Game crashing? Adjust emulator settings.</li>
+                            <li>Slow downloads? Check your internet connection.</li>
+                            <li>File not opening? Make sure it is fully downloaded.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= QUICK HELP ACTIONS ================= -->
+    <section class="game-controls">
+        <div class="container controls-container">
+
+            <div class="filter-buttons">
+
+                <a href="./contact.html" class="btn">Contact Support</a>
+                <a href="./request.html" class="btn">Request a Game</a>
+                <a href="./search.html" class="btn">Search Games</a>
+
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('open');
+            });
+        });
+    </script>
+
+    <!-- ================= FOOTER ================= -->
+    <footer>
+        <div class="container footer-container">
+
+            <div class="footer-links">
+                <a href="./about-us.html">About Us</a>
+                <a href="./contact.html">Contact</a>
+                <a href="./request.html">Request a Game</a>
+                <a href="./help.html">Help</a>
+                <a href="./privacy-policy.html">Privacy Policy</a>
+                <a href="./terms-of-service.html">Terms of Service</a>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 Nimo's Gaming. All Rights Reserved.</p>
+            </div>
+
+        </div>
+    </footer>
+
+</body>
+
+</html>

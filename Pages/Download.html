@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download | Nimo's Gaming</title>
+
+    <link rel="stylesheet" href="../CSS/Game-system.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="../Core Pages ( Main Navigation)/index.html">
+                    <img src="../Icon/canva-dark-abstract-black-panther.jpg" alt="Nimo's Gaming">
+                </a>
+            </div>
+
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="../Core Pages ( Main Navigation)/index.html">Home</a></li>
+                    <li><a href="../Core Pages ( Main Navigation)/android.html">Android</a></li>
+                    <li><a href="../Core Pages ( Main Navigation)/ppsspp.html">PPSSPP</a></li>
+                    <li><a href="../Core Pages ( Main Navigation)/ps2.html">PS2</a></li>
+                    <li><a href="../Game System Pages/Download.html" class="active">Download</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ================= PAGE HERO ================= -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Game Downloads</h1>
+            <p>Download games safely from trusted sources</p>
+        </div>
+    </section>
+
+    <!-- ================= DOWNLOAD SYSTEM ================= -->
+    <section class="games-section">
+        <div class="container">
+
+            <!-- FILTER / SEARCH DOWNLOADS (NEW FEATURE) -->
+            <div class="game-controls">
+                <div class="search-box">
+                    <input type="text" id="download-search" placeholder="Search downloads...">
+                    <button onclick="searchDownloads()">Search</button>
+                </div>
+            </div>
+
+            <!-- DOWNLOAD RESULTS -->
+            <div id="download-list">
+
+                <!-- EMPTY STATE -->
+                <div class="empty-state" id="download-empty">
+                    <h3>No downloads available yet 😔</h3>
+                    <p>Games will appear here once added to the system.</p>
+                    <a href="../Game System Pages/request.html" class="btn">Request a Game</a>
+                </div>
+
+                <!-- JS WILL INJECT DOWNLOAD CARDS HERE -->
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= INFO SECTION ================= -->
+    <section class="install-guide">
+        <div class="container">
+
+            <h2>How Downloads Work</h2>
+
+            <ol>
+                <li>Select a game from the list</li>
+                <li>Click the download button</li>
+                <li>You may be redirected to a trusted source</li>
+                <li>Or download directly from Nimo’s storage links</li>
+                <li>Install and enjoy 🎮</li>
+            </ol>
+
+            <p><strong>⚠️ Note:</strong> Always use trusted sources only.</p>
+
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer>
+        <div class="container footer-container">
+
+            <div class="footer-links">
+                <a href="../Support Pages/about-us.html">About Us</a>
+                <a href="../Support Pages/contact.html">Contact</a>
+                <a href="../Game System Pages/request.html">Request a Game</a>
+                <a href="../Legal Pages/privacy-policy.html">Privacy Policy</a>
+                <a href="../Legal Pages/terms-of-service.html">Terms of Service</a>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 Nimo's Gaming. All Rights Reserved.</p>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- ================= JS SYSTEM ================= -->
+    <script src="../JS/Data.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            if (window.gameDataLoaded && typeof window.gameDataLoaded.then === "function") {
+                window.gameDataLoaded.then(loadDownloadList).catch(loadDownloadList);
+            } else {
+                loadDownloadList();
+            }
+        });
+
+        function loadDownloadList() {
+            const container = document.getElementById("download-list");
+            container.innerHTML = "";
+
+            // Check for game ID in URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const gameId = urlParams.get('id');
+
+            let gamesToShow = games;
+            if (gameId) {
+                gamesToShow = games.filter(game => game.id === gameId);
+            }
+
+            gamesToShow.forEach(game => {
+                const card = document.createElement("div");
+                card.className = "download-card";
+
+                const downloadLinks = game.downloadLinks.map(link =>
+                    `<a href="${link.url}" target="_blank" class="download-link">${link.title || link.name}</a>`
+                ).join("");
+
+                card.innerHTML = `
+                    <img src="${game.image}" alt="${game.title}">
+                    <div class="download-info">
+                        <h3>${game.title}</h3>
+                        <p>Platform: ${game.platform}</p>
+                        <p>Size: ${game.size}</p>
+                        <p>Genre: ${game.genre}</p>
+                        <div class="download-buttons">
+                            ${downloadLinks}
+                        </div>
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+
+            // Hide empty state if games are shown
+            if (gamesToShow.length > 0) {
+                document.getElementById("download-empty").style.display = "none";
+            }
+        }
+
+        function searchDownloads() {
+            const query = document.getElementById("download-search").value.toLowerCase();
+            const container = document.getElementById("download-list");
+            container.innerHTML = "";
+
+            const filtered = games.filter(game =>
+                game.title.toLowerCase().includes(query) ||
+                game.platform.toLowerCase().includes(query) ||
+                game.genre.toLowerCase().includes(query)
+            );
+
+            if (filtered.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <h3>No downloads found 😔</h3>
+                        <p>Try a different search term.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            filtered.forEach(game => {
+                const card = document.createElement("div");
+                card.className = "download-card";
+
+                const downloadLinks = game.downloadLinks.map(link =>
+                    `<a href="${link.url}" target="_blank" class="download-link">${link.name}</a>`
+                ).join("");
+
+                card.innerHTML = `
+                    <img src="${game.image}" alt="${game.title}">
+                    <div class="download-info">
+                        <h3>${game.title}</h3>
+                        <p>Platform: ${game.platform}</p>
+                        <p>Size: ${game.size}</p>
+                        <p>Genre: ${game.genre}</p>
+                        <div class="download-buttons">
+                            ${downloadLinks}
+                        </div>
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+        }
+    </script>
+
+</body>
+
+</html>

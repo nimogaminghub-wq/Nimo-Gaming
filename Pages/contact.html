@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Nimo's Gaming for support, game requests, and download help">
+    <meta name="keywords" content="contact, support, help, game requests, customer service">
+    <title>Contact | Nimo's Gaming</title>
+
+    <link rel="stylesheet" href="../CSS/Support.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../Icon/canva-dark-abstract-black-panther.jpg" alt="Nimo's Gaming">
+                </a>
+            </div>
+
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="./android.html">Android</a></li>
+                    <li><a href="./ppsspp.html">PPSSPP</a></li>
+                    <li><a href="./ps2.html">PS2</a></li>
+                    <li><a href="./contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ================= HERO ================= -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Contact Us</h1>
+            <p>We are here to help you anytime 🎮</p>
+        </div>
+    </section>
+
+    <!-- ================= CONTACT INFO (NEW FEATURE) ================= -->
+    <section class="game-controls">
+        <div class="container stat-grid">
+
+            <div class="stat-box">
+                <h3>📧 Email</h3>
+                <p>nimoemmanuel2007@gmail.com</p>
+            </div>
+
+            <div class="stat-box">
+                <h3>⚡ Response</h3>
+                <p>Within 24–48 hours</p>
+            </div>
+
+            <div class="stat-box">
+                <h3>🌍 Availability</h3>
+                <p>24/7 Support</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= CONTACT FORM ================= -->
+    <section class="games-section">
+        <div class="container">
+
+            <form class="contact-form" id="contact-form">
+
+                <label>Name</label>
+                <input type="text" id="contact-name" placeholder="Enter your name" required>
+
+                <label>Email</label>
+                <input type="email" id="contact-email" placeholder="Enter your email" required>
+
+                <label>Subject</label>
+                <input type="text" id="contact-subject" placeholder="Subject" required>
+
+                <label>Message</label>
+                <textarea id="contact-message" placeholder="Write your message..." required></textarea>
+
+                <button type="submit" class="btn">Send Message</button>
+
+            </form>
+
+            <!-- SUCCESS MESSAGE (JS READY) -->
+            <div id="contact-success" style="display:none; margin-top:20px;">
+                <h3>✅ Message Sent Successfully!</h3>
+                <p>We will respond to you as soon as possible.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= FAQ SECTION (NEW FEATURE) ================= -->
+    <section class="install-guide">
+        <div class="container">
+
+            <h2>Frequently Asked Questions</h2>
+
+            <ol>
+                <li><strong>How fast do you reply?</strong> Usually within 24–48 hours.</li>
+                <li><strong>Can I request games here?</strong> Use the Request page instead.</li>
+                <li><strong>Is this support free?</strong> Yes, completely free.</li>
+                <li><strong>Do you fix download issues?</strong> Yes, we help with all game issues.</li>
+            </ol>
+
+        </div>
+    </section>
+
+    <script>
+        const contactForm = document.getElementById('contact-form');
+        const contactSuccess = document.getElementById('contact-success');
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', event => {
+                event.preventDefault();
+                contactSuccess.style.display = 'block';
+                contactForm.reset();
+            });
+        }
+    </script>
+
+    <!-- ================= FOOTER ================= -->
+    <footer>
+        <div class="container footer-container">
+
+            <div class="footer-links">
+                <a href="./about-us.html">About Us</a>
+                <a href="./contact.html">Contact</a>
+                <a href="./request.html">Request a Game</a>
+                <a href="./help.html">Help</a>
+                <a href="./privacy-policy.html">Privacy Policy</a>
+                <a href="./terms-of-service.html">Terms of Service</a>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 Nimo's Gaming. All Rights Reserved.</p>
+            </div>
+
+        </div>
+    </footer>
+
+</body>
+
+</html>

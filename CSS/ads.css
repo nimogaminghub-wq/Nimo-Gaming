@@ -1,0 +1,109 @@
+/* ================= ADVERTISEMENT STYLES ================= */
+.ad-banner {
+    padding: 20px 0;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    border-top: 1px solid #334155;
+    border-bottom: 1px solid #334155;
+}
+
+.ad-slot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90px;
+}
+
+.ad-leaderboard {
+    max-width: 728px;
+    width: 100%;
+}
+
+.ad-rectangle {
+    max-width: 300px;
+    width: 100%;
+}
+
+.ad-placeholder {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    border: 2px dashed #475569;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    position: relative;
+    transition: all 0.3s ease;
+    min-height: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.ad-placeholder:hover {
+    border-color: #38bdf8;
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+}
+
+.ad-placeholder span {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #0f172a;
+    color: #94a3b8;
+    padding: 2px 8px;
+    font-size: 11px;
+    border-radius: 4px;
+    border: 1px solid #334155;
+}
+
+.ad-content p {
+    margin: 5px 0 0 0;
+    color: #cbd5e1;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.ad-content small {
+    color: #64748b;
+    font-size: 12px;
+}
+
+/* Mobile responsive ads */
+@media (max-width: 768px) {
+    .ad-leaderboard {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+    
+    .ad-rectangle {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+    
+    .ad-placeholder {
+        padding: 10px;
+        min-height: 50px;
+    }
+}
+
+/* Sidebar ads */
+.sidebar-ad {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 160px;
+    z-index: 100;
+}
+
+.sidebar-ad .ad-placeholder {
+    min-height: 600px;
+    padding: 10px;
+}
+
+/* Hide sidebar on mobile */
+@media (max-width: 1024px) {
+    .sidebar-ad {
+        display: none;
+    }
+}
