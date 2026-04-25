@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Search for your favorite Android, PPSSPP, and PS2 games at Nimo's Gaming">
+    <meta name="keywords" content="game search, find games, android games, ppsspp, ps2">
+    <title>Search Games | Nimo's Gaming</title>
+
+    <link rel="stylesheet" href="../CSS/Search.css">
+    <link rel="stylesheet" href="../CSS/GameCards.css">
+    <link rel="stylesheet" href="../CSS/ads.css">
+    <link rel="stylesheet" href="../CSS/Download.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../icon/canva-dark-abstract-black-panther.jpg" alt="Nimo's Gaming">
+                </a>
+            </div>
+
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="./android.html">Android</a></li>
+                    <li><a href="./ppsspp.html">PPSSPP</a></li>
+                    <li><a href="./ps2.html">PS2</a></li>
+                    <li><a href="./search.html" class="active">Search</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ================= PAGE HERO ================= -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Search Games</h1>
+            <p>Find Android, PPSSPP, and PS2 games instantly</p>
+        </div>
+    </section>
+
+    <!-- ================= LEADERBOARD AD ================= -->
+    <section class='ad-banner ad-leaderboard'>
+        <div class='container'>
+            <div class='ad-placeholder'>
+                <span>Advertisement</span>
+                <div class='ad-content'>
+                    <p>728 x 90 Banner Ad</p>
+                    <p>Your ad here</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SEARCH BOX ================= -->
+    <section class="game-controls">
+        <div class="container controls-container">
+
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Search for games...">
+                <button id="search-btn">Search</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= SEARCH RESULTS ================= -->
+    <section class="games-section">
+        <div class="container">
+
+            <div id="search-results">
+
+                <!-- EMPTY STATE -->
+                <div class="empty-state" id="empty-state">
+                    <h3>No results yet 🔍</h3>
+                    <p>Type a game name and press search to find results.</p>
+                </div>
+
+                <!-- JS WILL INJECT RESULTS HERE -->
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= QUICK FILTER (OPTIONAL POWER FEATURE) ================= -->
+    <section class="game-controls">
+        <div class="container controls-container">
+
+            <div class="filter-buttons">
+                <button onclick="quickSearch('GTA')">GTA</button>
+                <button onclick="quickSearch('FIFA')">FIFA</button>
+                <button onclick="quickSearch('Need for Speed')">NFS</button>
+                <button onclick="quickSearch('God of War')">God of War</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer>
+        <div class="container footer-container">
+
+            <div class="footer-links">
+                <a href="./about-us.html">About Us</a>
+                <a href="./contact.html">Contact</a>
+                <a href="./request.html">Request a Game</a>
+                <a href="./help.html">Help</a>
+                <a href="./privacy-policy.html">Privacy Policy</a>
+                <a href="./terms-of-service.html">Terms of Service</a>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 Nimo's Gaming. All Rights Reserved.</p>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- ================= JS CONNECTION ================= -->
+    <script src="../JS/Data.js"></script>
+    <script src="../JS/download.js"></script>
+    <script src="../JS/Main.js"></script>
+
+</body>
+
+</html>

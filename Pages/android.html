@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Download free Android games including action, racing, and strategy games at Nimo's Gaming">
+    <meta name="keywords" content="android games, mobile games, apk downloads, free games">
+    <title>Android Games | Nimo's Gaming</title>
+    <link rel="stylesheet" href="../CSS/android.css">
+    <link rel="stylesheet" href="../CSS/GameCards.css">
+    <link rel="stylesheet" href="../CSS/ads.css">
+    <link rel="stylesheet" href="../CSS/Download.css">
+</head>
+
+<body data-page="android">
+
+    <!-- ================= HEADER ================= -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../icon/canva-dark-abstract-black-panther.jpg" alt="Nimo's Gaming">
+                </a>
+            </div>
+
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="./android.html" class="active">Android</a></li>
+                    <li><a href="./ppsspp.html">PPSSPP</a></li>
+                    <li><a href="./ps2.html">PS2</a></li>
+                    <li><a href="./search.html">Search</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ================= PAGE HERO ================= -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Android Games</h1>
+            <p>Download the best Android games safely from Nimo's Gaming</p>
+        </div>
+    </section>
+
+    <!-- ================= AD BANNER ================= -->
+    <section class="ad-banner">
+        <div class="container">
+            <div class="ad-slot ad-leaderboard">
+                <div class="ad-placeholder">
+                    <span>Advertisement</span>
+                    <div class="ad-content">
+                        <p>728x90 Banner Ad Space</p>
+                        <small>Premium gaming ads - Contact us</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SEARCH & FILTER ================= -->
+    <section class="game-controls">
+        <div class="container controls-container">
+
+            <!-- Search -->
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Search Android games...">
+                <button id="search-btn">Search</button>
+            </div>
+
+            <!-- Filters -->
+            <div class="filter-buttons">
+                <button onclick="filterByCategory('All')">All</button>
+                <button onclick="filterByCategory('Action')">Action</button>
+                <button onclick="filterByCategory('Adventure')">Adventure</button>
+                <button onclick="filterByCategory('Racing')">Racing</button>
+                <button onclick="filterByCategory('RPG')">RPG</button>
+                <button onclick="filterByCategory('Sports')">Sports</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= GAME GRID ================= -->
+    <section class="games-section">
+        <div class="container" id="games-container">
+
+            <!-- Empty state -->
+            <div class="empty-state" id="empty-state">
+                <h3>No Android games yet 😔</h3>
+                <p>
+                    Games will be added soon.
+                    You can request a game below 👇
+                </p>
+                <a href="./request.html" class="btn">Request a Game</a>
+            </div>
+
+            <!-- Games will be injected here by JS -->
+
+        </div>
+    </section>
+
+    <!-- ================= INSTALL GUIDE ================= -->
+    <section class="install-guide">
+        <div class="container">
+
+            <!-- Android Instructions -->
+            <div class="install-section">
+                <h3>📱 On Android Mobile</h3>
+                <ol>
+                    <li>Go to the game page and click the <strong>APKPure</strong> or <strong>Google Play</strong>
+                        button.</li>
+                    <li>If using Google Play: click <strong>Install</strong>.</li>
+                    <li>If using APKPure: download the <strong>.apk</strong> file.</li>
+                    <li>Enable unknown sources in settings.</li>
+                    <li>Open APK and install.</li>
+                    <li>Tap <strong>Open</strong> to play.</li>
+                </ol>
+                <p><strong>⚠️ Note:</strong> Only download from trusted sources.</p>
+            </div>
+
+            <!-- PC Instructions -->
+            <div class="install-section">
+                <h3>💻 On Windows PC / Laptop</h3>
+                <p>Use an emulator like BlueStacks.</p>
+                <ol>
+                    <li>Install emulator</li>
+                    <li>Download APK</li>
+                    <li>Install inside emulator</li>
+                    <li>Launch game</li>
+                </ol>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer>
+        <div class="container footer-container">
+
+            <div class="footer-links">
+                <a href="./about-us.html">About Us</a>
+                <a href="./contact.html">Contact</a>
+                <a href="./request.html">Request a Game</a>
+                <a href="./help.html">Help</a>
+                <a href="./privacy-policy.html">Privacy Policy</a>
+                <a href="./terms-of-service.html">Terms of Service</a>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 Nimo's Gaming. All Rights Reserved.</p>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- ================= JS ================= -->
+    <script src="../JS/Data.js"></script>
+    <script src="../JS/download.js"></script>
+    <script src="../JS/Main.js"></script>
+
+</body>
+
+</html>

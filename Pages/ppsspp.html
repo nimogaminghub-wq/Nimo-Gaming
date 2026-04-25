@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Download free PPSSPP games - PlayStation Portable emulator games on Android at Nimo's Gaming">
+    <meta name="keywords" content="ppsspp, psp games, emulator games, android emulator, free psp downloads">
+    <title>PPSSPP Games | Nimo's Gaming</title>
+    <link rel="stylesheet" href="../CSS/PPSSPP.css">
+    <link rel="stylesheet" href="../CSS/GameCards.css">
+    <link rel="stylesheet" href="../CSS/Download.css">
+</head>
+
+<body data-page="ppsspp">
+
+    <!-- ================= HEADER ================= -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../icon/canva-dark-abstract-black-panther.jpg" alt="Nimo's Gaming">
+                </a>
+            </div>
+
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="./android.html">Android</a></li>
+                    <li><a href="./ppsspp.html" class="active">PPSSPP</a></li>
+                    <li><a href="./ps2.html">PS2</a></li>
+                    <li><a href="./search.html">Search</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ================= PAGE HERO ================= -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>PPSSPP Games</h1>
+            <p>Download PSP ISO/CSO games and play with PPSSPP emulator</p>
+        </div>
+    </section>
+
+    <!-- ================= AD BANNER ================= -->
+    <section class='ad-banner'>
+        <div class='container'>
+            <div class='ad-slot ad-leaderboard'>
+                <div class='ad-placeholder'>
+                    <span>Advertisement</span>
+                    <div class='ad-content'>
+                        <p>728x90 Banner Ad Space</p>
+                        <small>Premium gaming ads - Contact us</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SEARCH & FILTER ================= -->
+    <section class="game-controls">
+        <div class="container controls-container">
+
+            <!-- SEARCH -->
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Search PPSSPP games...">
+                <button id="search-btn">Search</button>
+            </div>
+
+            <!-- FILTERS -->
+            <div class="filter-buttons">
+                <button onclick="filterByCategory('All')">All</button>
+                <button onclick="filterByCategory('Action')">Action</button>
+                <button onclick="filterByCategory('Adventure')">Adventure</button>
+                <button onclick="filterByCategory('Racing')">Racing</button>
+                <button onclick="filterByCategory('Fighting')">Fighting</button>
+                <button onclick="filterByCategory('RPG')">RPG</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= GAME GRID ================= -->
+    <section class="games-section">
+        <div class="container" id="games-container">
+
+            <!-- EMPTY STATE -->
+            <div class="empty-state" id="empty-state">
+                <h3>No PPSSPP games yet 😔</h3>
+                <p>
+                    PSP ISO/CSO games will be added soon.
+                    You can request your favorite game below 👇
+                </p>
+                <a href="./request.html" class="btn">Request a Game</a>
+            </div>
+
+            <!-- JS WILL LOAD GAMES HERE -->
+
+        </div>
+    </section>
+
+    <!-- ================= INSTALL GUIDE ================= -->
+    <section class="install-guide">
+        <div class="container">
+            <h2>How to Play PPSSPP Games</h2>
+
+            <ol>
+                <li>Download PSP ISO/CSO file</li>
+                <li>Install <strong>PPSSPP Emulator</strong></li>
+                <li>Extract ZIP/RAR if needed</li>
+                <li>Open PPSSPP and locate game file</li>
+                <li>Tap and start playing 🎮</li>
+            </ol>
+
+            <p><strong>⚠️ Tip:</strong> Always download from trusted sources or direct links from Nimo Gaming.</p>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer>
+        <div class="container footer-container">
+
+            <div class="footer-links">
+                <a href="./about-us.html">About Us</a>
+                <a href="./contact.html">Contact</a>
+                <a href="./request.html">Request a Game</a>
+                <a href="./help.html">Help</a>
+                <a href="./privacy-policy.html">Privacy Policy</a>
+                <a href="./terms-of-service.html">Terms of Service</a>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 Nimo's Gaming. All Rights Reserved.</p>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- ================= JS CONNECTION ================= -->
+    <script src="../JS/Data.js"></script>
+    <script src="../JS/download.js"></script>
+    <script src="../JS/Main.js"></script>
+
+</body>
+
+</html>

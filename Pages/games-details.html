@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="View detailed information and download links for your favorite games">
+    <meta name="keywords" content="game details, game information, download links, game specs">
+    <title>Game Details | Nimo's Gaming</title>
+
+    <link rel="stylesheet" href="../CSS/Search.css">
+
+    <!-- JS (correct structure placement at bottom is better, but we keep minimal here) -->
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../icon/canva-dark-abstract-black-panther.jpg" alt="Nimo's Gaming">
+                </a>
+            </div>
+
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="./android.html">Android</a></li>
+                    <li><a href="./ppsspp.html">PPSSPP</a></li>
+                    <li><a href="./ps2.html">PS2</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ================= GAME HERO (DYNAMIC) ================= -->
+    <section class="page-hero">
+        <div class="container">
+            <h1 id="game-title">Loading Game...</h1>
+            <p id="game-platform">Platform: Loading...</p>
+        </div>
+    </section>
+
+    <!-- ================= LEADERBOARD AD ================= -->
+    <section class='ad-banner ad-leaderboard'>
+        <div class='container'>
+            <div class='ad-placeholder'>
+                <span>Advertisement</span>
+                <div class='ad-content'>
+                    <p>728 x 90 Banner Ad</p>
+                    <p>Your ad here</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= GAME DETAILS ================= -->
+    <section class="games-section">
+        <div class="container game-details">
+
+            <!-- GAME IMAGE -->
+            <div class="game-image">
+                <img id="game-image" src="../icon/best-android-games.jpg" alt="Game Image">
+            </div>
+
+            <!-- GAME INFO -->
+            <div class="game-info">
+
+                <h2>Game Overview</h2>
+
+                <ul>
+                    <li><strong>Genre:</strong> <span id="game-genre">Loading...</span></li>
+                    <li><strong>Platform:</strong> <span id="game-platform-2">Loading...</span></li>
+                    <li><strong>File Size:</strong> <span id="game-size">Loading...</span></li>
+                    <li><strong>Developer:</strong> <span id="game-dev">Loading...</span></li>
+                    <li><strong>Mode:</strong> <span id="game-mode">Loading...</span></li>
+                </ul>
+
+                <a id="download-link" href="#" class="btn">Download Game</a>
+                <div id="download-links" class="download-links"></div>
+                <a href="./Download.html" class="btn secondary">View All Downloads</a>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= DESCRIPTION ================= -->
+    <section class="games-section">
+        <div class="container">
+            <h2>Game Description</h2>
+            <p id="game-description">Loading description...</p>
+        </div>
+    </section>
+
+    <!-- ================= RATING ================= -->
+    <section class="games-section">
+        <div class="container">
+            <h2>Game Rating</h2>
+            <p id="game-rating">★★★★★</p>
+        </div>
+    </section>
+
+    <!-- ================= COMMENTS ================= -->
+    <section class="games-section">
+        <div class="container">
+
+            <h2>User Comments</h2>
+
+            <!-- STATIC SAMPLE COMMENTS -->
+            <div class="comment">
+                <p><strong>User123:</strong> Great game 🔥</p>
+            </div>
+
+            <div class="comment">
+                <p><strong>NimoFan:</strong> Works perfectly!</p>
+            </div>
+
+            <!-- COMMENT FORM -->
+            <form class="comment-form">
+                <textarea placeholder="Write your comment..."></textarea>
+                <button type="submit" class="btn">Post Comment</button>
+            </form>
+
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer>
+        <div class="container footer-container">
+
+            <div class="footer-links">
+                <a href="./about-us.html">About Us</a>
+                <a href="./contact.html">Contact</a>
+                <a href="./request.html">Request a Game</a>
+                <a href="./help.html">Help</a>
+                <a href="./privacy-policy.html">Privacy Policy</a>
+                <a href="./terms-of-service.html">Terms of Service</a>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 Nimo's Gaming. All Rights Reserved.</p>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- ================= JS SYSTEM ================= -->
+    <script src="../JS/Data.js"></script>
+    <script src="../JS/Main.js"></script>
+    <script src="../JS/download.js"></script>
+    <script src="../JS/Details.js"></script>
+
+</body>
+
+</html>

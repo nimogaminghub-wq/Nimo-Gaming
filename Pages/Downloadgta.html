@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download GTA San Andreas</title>
+    <link rel="stylesheet" href="../CSS/Download.css">
+</head>
+
+<body class="gta-page">
+
+    <!-- HEADER -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../icon/canva-dark-abstract-black-panther.jpg" alt="Nimo's Gaming Logo">
+                </a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="./Gta.html">Back to GTA</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <div class="container">
+
+        <!-- DOWNLOAD SECTION HEADER -->
+        <section class="gta-download">
+            <h2>Download GTA San Andreas</h2>
+            <p class="notice">⏳ Unlocking download in <span id="timer">10</span> seconds</p>
+        </section>
+
+        <!-- AD SPACE 1 -->
+        <div class="ad-slot">
+            <p>Ad Space - Premium Offers</p>
+        </div>
+
+        <!-- DOWNLOAD CARDS GRID -->
+        <div class="download-grid">
+            <!-- ZIP DATA FILE -->
+            <div class="download-card">
+                <h3>San Andreas Data</h3>
+                <p class="subtitle">ZIP Format</p>
+                <p>Complete game data and resources in ZIP format. Extract to Android/obb folder.</p>
+                <div class="info-row">
+                    <span class="info-label">File Type</span>
+                    <span class="info-value">ZIP</span>
+                </div>
+                <a id="zip" class="btn disabled"
+                    href="https://drive.google.com/uc?export=download&id=1rcfY7G2kkaCvdN-xPF1re46_NMiMEw5L">
+                    Locked...
+                </a>
+            </div>
+
+            <!-- APK FILE -->
+            <div class="download-card">
+                <h3>GTA San Andreas APK</h3>
+                <p class="subtitle">Application Package</p>
+                <p>Main application file. Install this first before extracting data files.</p>
+                <div class="info-row">
+                    <span class="info-label">File Type</span>
+                    <span class="info-value">APK</span>
+                </div>
+                <a id="apk" class="btn disabled"
+                    href="https://drive.google.com/uc?export=download&id=1_MfL_8WmHTo-DfKGS-oBtpet0YhHDwNn">
+                    Locked...
+                </a>
+            </div>
+
+            <!-- CHEAT APK -->
+            <div class="download-card">
+                <h3>GTA Cheat APK</h3>
+                <p class="subtitle">Cheats & Mods</p>
+                <p>Optional cheats and modifications. Install after the main game for enhanced gameplay.</p>
+                <div class="info-row">
+                    <span class="info-label">File Type</span>
+                    <span class="info-value">APK</span>
+                </div>
+                <a id="cheat" class="btn disabled"
+                    href="https://drive.google.com/uc?export=download&id=1lq8n4jE9_AGvluyzJ0oKty08Z_5Y-Jj2">
+                    Locked...
+                </a>
+            </div>
+        </div>
+
+        <!-- AD SPACE 2 -->
+        <div class="ad-slot">
+            <p>Ad Space - Additional Offers</p>
+        </div>
+
+        <!-- INSTALLATION INSTRUCTIONS -->
+        <section class="installation-steps">
+            <h2>Installation Steps</h2>
+            <ol>
+                <li><strong>Download</strong> all three files above (ZIP, APK, and Cheat)</li>
+                <li><strong>Enable Unknown Sources:</strong> Settings → Security → Enable Unknown Sources</li>
+                <li><strong>Install APK:</strong> Install the APK file first</li>
+                <li><strong>Extract Data:</strong> Extract the ZIP data to Android/obb folder</li>
+                <li><strong>Launch Game:</strong> Open the app and enjoy playing!</li>
+            </ol>
+        </section>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-links">
+                <a href="./about-us.html">About Us</a>
+                <a href="./contact.html">Contact</a>
+                <a href="./request.html">Request a Game</a>
+                <a href="./help.html">Help</a>
+                <a href="./privacy-policy.html">Privacy Policy</a>
+                <a href="./terms-of-service.html">Terms of Service</a>
+            </div>
+            <p>© 2026 Nimo's Gaming. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Timer functionality
+        let time = 10;
+        let t = setInterval(() => {
+            time--;
+            document.getElementById("timer").innerText = time;
+
+            if (time <= 0) {
+                clearInterval(t);
+                document.querySelectorAll(".btn.disabled").forEach(btn => {
+                    btn.classList.remove("disabled");
+                    btn.innerText = "Download Now";
+                });
+            }
+        }, 1000);
+
+        // Download tracking - apply to all buttons, including those that get enabled later
+        document.addEventListener("click", function (e) {
+            if (e.target.classList.contains("btn") && !e.target.classList.contains("disabled")) {
+                console.log("Download started for: " + e.target.getAttribute("id"));
+                // You can add analytics tracking here
+            }
+        });
+    </script>
+    <script src='../JS/ads.js'></script>
+    <script src='../JS/download.js'></script>
+
+</body>
+
+</html>
+
+        <!-- DOWNLOAD CARDS GRID -->
+        <div class="download-grid">
+            <!-- ZIP DATA FILE -->
+            <div class="download-card">
+                <h3>San Andreas Data</h3>
+                <p class="subtitle">ZIP Format</p>
+                <p>Complete game data and resources in ZIP format. Extract to Android/obb folder.</p>
+                <div class="info-row">
+                    <span class="info-label">File Type</span>
+                    <span class="info-value">ZIP</span>
+                </div>
+                <a id="zip" class="btn disabled"
+                    href="https://drive.google.com/uc?export=download&id=1rcfY7G2kkaCvdN-xPF1re46_NMiMEw5L">
+                    Locked...
+                </a>
+            </div>
+
+            <!-- APK FILE -->
+            <div class="download-card">
+                <h3>GTA San Andreas APK</h3>
+                <p class="subtitle">Application Package</p>
+                <p>Main application file. Install this first before extracting data files.</p>
+                <div class="info-row">
+                    <span class="info-label">File Type</span>
+                    <span class="info-value">APK</span>
+                </div>
+                <a id="apk" class="btn disabled"
+                    href="https://drive.google.com/uc?export=download&id=1_MfL_8WmHTo-DfKGS-oBtpet0YhHDwNn">
+                    Locked...
+                </a>
+            </div>
+
+            <!-- CHEAT APK -->
+            <div class="download-card">
+                <h3>GTA Cheat APK</h3>
+                <p class="subtitle">Cheats & Mods</p>
+                <p>Optional cheats and modifications. Install after the main game for enhanced gameplay.</p>
+                <div class="info-row">
+                    <span class="info-label">File Type</span>
+                    <span class="info-value">APK</span>
+                </div>
+                <a id="cheat" class="btn disabled"
+                    href="https://drive.google.com/uc?export=download&id=1lq8n4jE9_AGvluyzJ0oKty08Z_5Y-Jj2">
+                    Locked...
+                </a>
+            </div>
+        </div>
+
+        <!-- AD SPACE 2 -->
+        <div class="ad-slot">
+            <p>Ad Space - Additional Offers</p>
+        </div>
+
+        <!-- INSTALLATION INSTRUCTIONS -->
+        <section class="installation-steps">
+            <h2>Installation Steps</h2>
+            <ol>
+                <li><strong>Download</strong> all three files above (ZIP, APK, and Cheat)</li>
+                <li><strong>Enable Unknown Sources:</strong> Settings → Security → Enable Unknown Sources</li>
+                <li><strong>Install APK:</strong> Install the APK file first</li>
+                <li><strong>Extract Data:</strong> Extract the ZIP data to Android/obb folder</li>
+                <li><strong>Launch Game:</strong> Open the app and enjoy playing!</li>
+            </ol>
+        </section>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-links">
+                <a href="./about-us.html">About Us</a>
+                <a href="./contact.html">Contact</a>
+                <a href="./request.html">Request a Game</a>
+                <a href="./help.html">Help</a>
+                <a href="./privacy-policy.html">Privacy Policy</a>
+                <a href="./terms-of-service.html">Terms of Service</a>
+            </div>
+            <p>© 2026 Nimo's Gaming. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Timer functionality
+        let time = 10;
+        let t = setInterval(() => {
+            time--;
+            document.getElementById("timer").innerText = time;
+
+            if (time <= 0) {
+                clearInterval(t);
+                document.querySelectorAll(".btn.disabled").forEach(btn => {
+                    btn.classList.remove("disabled");
+                    btn.innerText = "Download Now";
+                });
+            }
+        }, 1000);
+
+        // Download tracking - apply to all buttons, including those that get enabled later
+        document.addEventListener("click", function (e) {
+            if (e.target.classList.contains("btn") && !e.target.classList.contains("disabled")) {
+                console.log("Download started for: " + e.target.getAttribute("id"));
+                // You can add analytics tracking here
+            }
+        });
+    </script>
+    <script src='../JS/ads.js'></script>
+    <script src='../JS/download.js'></script>
+
+</body>
+
+</html>
