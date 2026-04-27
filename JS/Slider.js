@@ -97,3 +97,89 @@ function loadSlider() {
     activateSlide(0);
     startAutoPlay();
 }
+
+/* ==========================================
+   CAROUSEL SLIDER FOR PLATFORMS
+=========================================== */
+function loadPlatformCarousels() {
+    loadCarouselSlider('slider-android', 'android', 8);
+    loadCarouselSlider('slider-ppsspp', 'ppsspp', 8);
+    loadCarouselSlider('slider-ps2', 'ps2', 8);
+}
+
+function loadCarouselSlider(containerId, platform, limit = 8) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    const platformGames = games
+        .filter(game => game.platform === platform)
+        .sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0))
+        .slice(0, limit);
+
+    if (!platformGames.length) {
+        container.innerHTML = `<p class="empty-state">No ${platform} games available yet.</p>`;
+        return;
+    }
+
+    container.innerHTML = `
+        <div class="carousel-wrapper">
+            <button class="carousel-nav carousel-prev" aria-label="Previous games">‹</button>
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    ${platformGames.map(game => `
+                        <div class="carousel-card">
+                            <div class="game-thumbnail">
+                                <img src="${game.image}" alt="${game.title}" loading="lazy">
+                                ${game.featured ? '<span class="badge-featured">Featured</span>' : ''}
+                            </div>
+                            <div class="game-info">
+                                <h4 class="game-title">${game.title}</h4>
+                                <p class="game-genre">${game.genre}</p>
+                                <div class="game-rating">
+                                    <span class="stars">⭐ ${game.rating || 'N/A'}</span>
+                                    <span class="size">${game.size || 'Unknown'}</span>
+                                </div>
+                                <button class="btn-small" onclick="downloadGame('${game.id}')">Download</button>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+            <button class="carousel-nav carousel-next" aria-label="Next games">›</button>
+        </div>
+    `;
+
+    setupCarouselControls(container);
+}
+
+function setupCarouselControls(container) {
+    const track = container.querySelector('.carousel-track');
+    const prevBtn = container.querySelector('.carousel-prev');
+    const nextBtn = container.querySelector('.carousel-next');
+    const cards = container.querySelectorAll('.carousel-card');
+
+    if (!track || !cards.length) return;
+
+    let scrollPosition = 0;
+    const cardWidth = 280; // Width of each card
+    const gap = 15;
+    const maxScroll = (cards.length * (cardWidth + gap)) - container.querySelector('.carousel-container').offsetWidth;
+
+    const updateButtons = () => {
+        prevBtn.disabled = scrollPosition <= 0;
+        nextBtn.disabled = scrollPosition >= maxScroll;
+    };
+
+    const scroll = (direction) => {
+        const amount = cardWidth + gap;
+        scrollPosition += direction * amount;
+        scrollPosition = Math.max(0, Math.min(scrollPosition, maxScroll));
+        track.style.transform = `translateX(-${scrollPosition}px)`;
+        updateButtons();
+    };
+
+    prevBtn.addEventListener('click', () => scroll(-1));
+    nextBtn.addEventListener('click', () => scroll(1));
+
+    updateButtons();
+}

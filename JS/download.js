@@ -91,11 +91,10 @@ const DownloadManager = {
 
     // Send to custom analytics server
     sendToAnalyticsServer(data) {
-        fetch('/api/analytics/download', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-        }).catch(err => console.error('Analytics error:', err));
+        // Note: GitHub Pages does not support backend endpoints
+        // Analytics would need to use a third-party service (Firebase, Mixpanel, etc.)
+        // For now, we use localStorage tracking only
+        console.log('Custom analytics endpoint not available on static hosting');
     },
 
     // Add to download queue
@@ -226,6 +225,23 @@ function showDownloadModal(game) {
     // Ensure downloadLinks exists and has proper structure
     const links = Array.isArray(game.downloadLinks) ? game.downloadLinks : [];
 
+    // Build download options HTML
+    const downloadOptionsHTML = links.length > 0 ? links.map((link, idx) => {
+        const linkName = link.name || link.title || 'Download Link ' + (idx + 1);
+        const linkUrl = link.url || '#';
+        const trackingData = JSON.stringify({ id: game.id, title: game.title, platform: game.platform });
+        const linkData = JSON.stringify(link);
+        return `
+            <a href="${linkUrl}" target="_blank" rel="noopener noreferrer" class="download-option-btn" 
+               role="listitem"
+               data-download="${game.id}" data-link-index="${idx}"
+               onclick="DownloadManager.trackDownload(${trackingData}, ${linkData}, 'start'); return true;">
+                <span class="option-name">${linkName}</span>
+                <span class="option-arrow">→</span>
+            </a>
+        `;
+    }).join('') : '<p style="color: #94a3b8; padding: 10px;">No download links available.</p>';
+
     modal.innerHTML = `
         <div class="download-modal-content">
             <button class="modal-close" onclick="this.closest('.download-modal').remove()" aria-label="Close dialog">✕</button>
@@ -245,39 +261,16 @@ function showDownloadModal(game) {
                 <p class="game-description">${game.description || 'No description available.'}</p>
                 <h3>Download Options:</h3>
                 <div class="download-options" role="list">
-                    ${links.length > 0 ? links.map((link, idx) => {
-        const linkName = link.name || link.title || 'Download Link ' + (idx + 1);
-        const linkUrl = link.url || '#';
-        return `
-                        <a href="${linkUrl}" target="_blank" rel="noopener noreferrer" class="download-option-btn" 
-                           role="listitem"
-                           data-download="${game.id}" data-link-index="${idx}"
-                           onclick="DownloadManager.trackDownload(${JSON.stringify({ id: game.id, title: game.title, platform: game.platform })}, ${JSON.stringify(link)}, 'start'); return true;">
-                            <span class="option-name">${linkName}</span>
-                            <span class="option-arrow">→</span>
-                        </a>
-                    `}).join('') : '<p style="color: #94a3b8; padding: 10px;">No download links available.</p>'}
+                    ${downloadOptionsHTML}
                 </div>
                 <p class="safety-note">⚠️ Download only from trusted sources. Always scan files for viruses.</p>
             </div>
         </div>
     `;
 
-    modal.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0,0,0,0.7);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 5000;
-        animation: fadeIn 0.3s ease-out;
-    `;
-
     document.body.appendChild(modal);
+
+    // Handle modal backdrop click to close
     modal.addEventListener('click', (e) => {
         if (e.target === modal) modal.remove();
     });

@@ -111,55 +111,142 @@
     <script src="../JS/Data.js"></script>
     <script src="../JS/download.js"></script>
     <script>
+        console.log('[Download Page] Initializing...');
+
         document.addEventListener("DOMContentLoaded", () => {
+            console.log('[Download Page] DOM Content Loaded');
+            console.log('[Download Page] Games available:', window.games ? window.games.length : 0);
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const gameId = urlParams.get('id');
+            console.log('[Download Page] Game ID from URL:', gameId);
+
             if (window.gameDataLoaded && typeof window.gameDataLoaded.then === "function") {
-                window.gameDataLoaded.then(loadDownloadList).catch(loadDownloadList);
+                console.log('[Download Page] Waiting for game data...');
+                window.gameDataLoaded.then(() => {
+                    console.log('[Download Page] Game data loaded');
+                    loadDownloadList();
+                }).catch((err) => {
+                    console.log('[Download Page] Game data load failed:', err);
+                    loadDownloadList();
+                });
             } else {
-                loadDownloadList();
+                console.log('[Download Page] No gameDataLoaded promise, loading directly');
+                // Small delay to ensure games array is populated
+                setTimeout(loadDownloadList, 100);
             }
         });
 
         function loadDownloadList() {
+            console.log('[Download Page] loadDownloadList() called');
+            console.log('[Download Page] Games available:', window.games ? window.games.length : 0);
+
             const container = document.getElementById("download-list");
+            if (!container) {
+                console.error('[Download Page] Container not found!');
+                return;
+            }
+
             container.innerHTML = "";
 
             // Check for game ID in URL
             const urlParams = new URLSearchParams(window.location.search);
             const gameId = urlParams.get('id');
+            console.log('[Download Page] Processing with gameId:', gameId);
 
-            let gamesToShow = games;
-            if (gameId) {
-                gamesToShow = games.filter(game => game.id === gameId);
+            let gamesToShow = window.games || [];
+            if (gameId && Array.isArray(gamesToShow)) {
+                gamesToShow = gamesToShow.filter(game => game.id === gameId);
+                console.log('[Download Page] Filtered games:', gamesToShow.length);
+            }
+
+            if (gamesToShow.length === 0) {
+                console.warn('[Download Page] No games to display');
+                if (!gameId) {
+                    // Show all games mode - show empty state
+                    container.innerHTML = `
+                        <div class="empty-state" id="download-empty">
+                            <h3>No downloads available yet 😔</h3>
+                            <p>Games will appear here once added to the system.</p>
+                            <a href="./request.html" class="btn">Request a Game</a>
+                        </div>
+                    `;
+                }
+                return;
             }
 
             gamesToShow.forEach(game => {
                 const card = document.createElement("div");
-                card.className = "download-card";
 
-                const downloadLinks = game.downloadLinks.map(link =>
-                    `<a href="${link.url}" target="_blank" class="download-link">${link.title || link.name}</a>`
-                ).join("");
+                // If a specific game is requested, use premium modal-style layout
+                if (gameId) {
+                    card.className = "premium-game-card";
 
-                card.innerHTML = `
-                    <img src="${game.image}" alt="${game.title}">
-                    <div class="download-info">
-                        <h3>${game.title}</h3>
-                        <p>Platform: ${game.platform}</p>
-                        <p>Size: ${game.size}</p>
-                        <p>Genre: ${game.genre}</p>
-                        <div class="download-buttons">
-                            ${downloadLinks}
+                    const downloadLinksHTML = Array.isArray(game.downloadLinks) && game.downloadLinks.length > 0
+                        ? game.downloadLinks.map((link, idx) => `
+                            <a href="${link.url}" target="_blank" rel="noopener noreferrer" class="download-option-btn">
+                                <span class="option-name">${link.name || link.title || 'Download Link ' + (idx + 1)}</span>
+                                <span class="option-arrow">→</span>
+                            </a>
+                        `).join("")
+                        : '<p style="color: #94a3b8; padding: 10px;">No download links available.</p>';
+
+                    card.innerHTML = `
+                        <div class="game-card-wrapper">
+                            <div class="game-card-header">
+                                <img src="${game.image}" alt="${game.title} - Game Cover" class="game-card-image">
+                                <div class="game-card-info">
+                                    <h2>${game.title}</h2>
+                                    <p class="game-card-platform">📱 ${(game.platform || 'Unknown').toUpperCase()}</p>
+                                </div>
+                            </div>
+                            <div class="game-card-body">
+                                <div class="game-stats">
+                                    <span>⭐ ${game.rating || 'N/A'}</span>
+                                    <span>📦 ${game.size || 'Unknown'}</span>
+                                    <span>📂 ${(game.genre || 'General').charAt(0).toUpperCase() + (game.genre || 'general').slice(1)}</span>
+                                </div>
+                                <p class="game-description">${game.description || 'No description available.'}</p>
+                                <h3>Download Options:</h3>
+                                <div class="download-options">
+                                    ${downloadLinksHTML}
+                                </div>
+                                <p class="safety-note">⚠️ Download only from trusted sources. Always scan files for viruses.</p>
+                            </div>
                         </div>
-                    </div>
-                `;
+                    `;
+                } else {
+                    // Regular card layout for search/browse
+                    card.className = "download-card";
+
+                    const downloadLinks = game.downloadLinks.map(link =>
+                        `<a href="${link.url}" target="_blank" class="download-link">${link.title || link.name}</a>`
+                    ).join("");
+
+                    card.innerHTML = `
+                        <img src="${game.image}" alt="${game.title}">
+                        <div class="download-info">
+                            <h3>${game.title}</h3>
+                            <p>Platform: ${game.platform}</p>
+                            <p>Size: ${game.size}</p>
+                            <p>Genre: ${game.genre}</p>
+                            <div class="download-buttons">
+                                ${downloadLinks}
+                            </div>
+                        </div>
+                    `;
+                }
 
                 container.appendChild(card);
             });
 
             // Hide empty state if games are shown
-            if (gamesToShow.length > 0) {
-                document.getElementById("download-empty").style.display = "none";
+            const emptyState = document.getElementById("download-empty");
+            if (emptyState && gamesToShow.length > 0) {
+                emptyState.style.display = "none";
             }
+
+            console.log('[Download Page] Display complete');
         }
 
         function searchDownloads() {
@@ -167,7 +254,7 @@
             const container = document.getElementById("download-list");
             container.innerHTML = "";
 
-            const filtered = games.filter(game =>
+            const filtered = (window.games || []).filter(game =>
                 game.title.toLowerCase().includes(query) ||
                 game.platform.toLowerCase().includes(query) ||
                 game.genre.toLowerCase().includes(query)

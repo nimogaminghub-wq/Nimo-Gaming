@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../CSS/android.css">
     <link rel="stylesheet" href="../CSS/GameCards.css">
     <link rel="stylesheet" href="../CSS/ads.css">
+    <link rel="stylesheet" href="../CSS/Download.css">
 </head>
 
 <body data-page="android">
@@ -59,21 +60,6 @@
         </div>
     </section>
 
-    <!-- ================= AD BANNER ================= -->
-    <section class='ad-banner'>
-        <div class='container'>
-            <div class='ad-slot ad-leaderboard'>
-                <div class='ad-placeholder'>
-                    <span>Advertisement</span>
-                    <div class='ad-content'>
-                        <p>728x90 Banner Ad Space</p>
-                        <small>Premium gaming ads - Contact us</small>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- ================= SEARCH & FILTER ================= -->
     <section class="game-controls">
         <div class="container controls-container">
@@ -97,6 +83,20 @@
         </div>
     </section>
 
+    <!-- ================= FEATURED ANDROID GAMES ================= -->
+    <section class="games-section featured-section">
+        <div class="container">
+            <div class="section-heading">
+                <h2>⭐ Featured Android Games</h2>
+                <p>Top picks from our Android collection</p>
+            </div>
+
+            <div id="featured-platform-games" class="featured-grid">
+                <!-- JS will load featured Android games here -->
+            </div>
+        </div>
+    </section>
+
     <!-- ================= GAME GRID ================= -->
     <section class="games-section">
         <div class="container" id="games-container">
@@ -113,6 +113,20 @@
 
             <!-- Games will be injected here by JS -->
 
+        </div>
+    </section>
+
+    <!-- ================= TOP RATED ANDROID GAMES ================= -->
+    <section class="games-section top-rated-section">
+        <div class="container">
+            <div class="section-heading">
+                <h2>🏆 Top Rated Android Games</h2>
+                <p>Highest rated games by our community</p>
+            </div>
+
+            <div id="top-rated-platform-games" class="games-grid">
+                <!-- JS will load top-rated Android games here -->
+            </div>
         </div>
     </section>
 

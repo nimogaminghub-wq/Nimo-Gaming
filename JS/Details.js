@@ -6,8 +6,8 @@ function renderDetails() {
 
     if (!game) {
         document.querySelector(".page-hero h1").innerText = "Game Not Found";
-        document.querySelector(".game-image img").src = "../Icon/placeholder.jpg";
-        document.querySelector(".game-info").innerHTML = "<p>Game not found. <a href='../Core Pages ( Main Navigation)/index.html'>Go back</a></p>";
+        document.querySelector(".game-image img").src = "../icon/best-android-games.jpg";
+        document.querySelector(".game-info").innerHTML = "<p>Game not found. <a href='../index.html'>Go back</a></p>";
         return;
     }
 

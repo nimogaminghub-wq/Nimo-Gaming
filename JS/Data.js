@@ -9,7 +9,10 @@ async function loadGameDataJson() {
     // Show loading indicator
     showLoadingIndicator();
 
-    const jsonPath = "../games/game-data.json";
+    // Construct correct path based on current location
+    // Works from both root (index.html) and Pages folder (android.html)
+    const isInPagesFolder = window.location.pathname.includes('/Pages/');
+    const jsonPath = isInPagesFolder ? "../games/game-data.json" : "./games/game-data.json";
 
     try {
         const response = await fetch(jsonPath, { cache: "no-store" });
@@ -18,10 +21,31 @@ async function loadGameDataJson() {
         }
 
         const data = await response.json();
+
+        // Normalize image paths based on current location
+        const normalizeImagePath = (imagePath) => {
+            if (imagePath.startsWith('http')) return imagePath; // External images unchanged
+            // If from root, keep ../icon/ as is (already correct for JSON in games/)
+            // If from Pages, convert to ../icon/ format
+            if (isInPagesFolder) {
+                return imagePath;
+            } else {
+                // From root: images in JSON use ../icon/, need to convert to ./icon/
+                return imagePath.replace(/^\.\.\//, './');
+            }
+        };
+
+        const normalizeGames = (gameList) => {
+            return gameList.map(game => ({
+                ...game,
+                image: normalizeImagePath(game.image)
+            }));
+        };
+
         window.games = [
-            ...(data.android || []),
-            ...(data.ppsspp || []),
-            ...(data.ps2 || [])
+            ...normalizeGames(data.android || []),
+            ...normalizeGames(data.ppsspp || []),
+            ...normalizeGames(data.ps2 || [])
         ];
 
         hideLoadingIndicator();

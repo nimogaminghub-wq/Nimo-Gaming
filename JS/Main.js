@@ -5,7 +5,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (pageType === "all" && bodyPage === "home") {
             renderFeaturedGames();
-        } else if (["android", "ppsspp", "ps2", "search"].includes(pageType)) {
+            renderTrendingGames();
+            renderTopRatedGames();
+            loadPlatformCarousels();
+        } else if (["android", "ppsspp", "ps2"].includes(pageType)) {
+            renderPlatformFeatured(pageType);
+            renderPlatformTopRated(pageType);
+            renderGames();
+        } else if (pageType === "search") {
             renderGames();
         }
 
@@ -57,7 +64,7 @@ function renderGames() {
 }
 
 /* =========================
-   RENDER FEATURED GAMES ON HOME
+   RENDER FEATURED GAMES ON HOME (12 GAMES)
 ========================= */
 function renderFeaturedGames() {
     const featuredContainer = document.getElementById("featured-games-container");
@@ -66,7 +73,7 @@ function renderFeaturedGames() {
     const featuredGames = games
         .filter(game => game.featured)
         .sort((a, b) => b.trendingScore - a.trendingScore)
-        .slice(0, 6);
+        .slice(0, 12);
 
     if (featuredGames.length === 0) {
         featuredContainer.innerHTML = `
@@ -129,6 +136,35 @@ function renderFeaturedGames() {
 }
 
 /* =========================
+   RENDER TRENDING GAMES
+========================= */
+function renderTrendingGames() {
+    const container = document.getElementById("trending-games-container");
+    if (!container) return;
+
+    const trendingGames = games
+        .sort((a, b) => (b.trendingScore || 0) - (a.trendingScore || 0))
+        .slice(0, 12);
+
+    displayGames(trendingGames, container.parentElement);
+}
+
+/* =========================
+   RENDER TOP RATED GAMES
+========================= */
+function renderTopRatedGames() {
+    const container = document.getElementById("top-rated-games-container");
+    if (!container) return;
+
+    const topRatedGames = games
+        .filter(game => game.rating)
+        .sort((a, b) => parseFloat(b.rating || 0) - parseFloat(a.rating || 0))
+        .slice(0, 12);
+
+    displayGames(topRatedGames, container.parentElement);
+}
+
+/* =========================
    DISPLAY GAME CARDS
 ========================= */
 function displayGames(gameList, container) {
@@ -184,6 +220,67 @@ function displayGames(gameList, container) {
 }
 
 /* =========================
+   PLATFORM FEATURED GAMES
+========================= */
+function renderPlatformFeatured(platform) {
+    const container = document.getElementById("featured-platform-games");
+    if (!container) return;
+
+    const platformGames = games
+        .filter(game => game.platform.toLowerCase() === platform && game.featured)
+        .slice(0, 12);
+
+    if (platformGames.length === 0) {
+        container.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 20px;">No featured games yet.</p>';
+        return;
+    }
+
+    container.innerHTML = "";
+    platformGames.forEach((game, index) => {
+        const card = document.createElement("article");
+        card.className = "featured-card";
+        card.style.animationDelay = `${(index % 12) * 0.06}s`;
+
+        const genreIcon = getGenreIcon(game.genre);
+        card.innerHTML = `
+            <div class="featured-card-image">
+                <img src="${game.image}" alt="${game.title}" loading="lazy">
+                <span class="badge-featured">Featured</span>
+                <div class="featured-overlay"></div>
+            </div>
+            <div class="featured-card-body">
+                <div class="card-header">
+                    <span class="badge genre-badge">${genreIcon} ${game.genre || 'Game'}</span>
+                </div>
+                <h3 class="card-title">${game.title}</h3>
+                <p class="card-description">${game.description || 'Top pick from our collection.'}</p>
+                <div class="featured-meta">
+                    <span class="meta-value">⭐ ${game.rating || 'N/A'}/5</span>
+                    <span class="meta-value">${game.size || 'Unknown'}</span>
+                </div>
+                <button class="btn-primary" onclick="downloadGame('${game.id}')">Download</button>
+            </div>
+        `;
+        container.appendChild(card);
+    });
+}
+
+/* =========================
+   PLATFORM TOP RATED GAMES
+========================= */
+function renderPlatformTopRated(platform) {
+    const container = document.getElementById("top-rated-platform-games");
+    if (!container) return;
+
+    const topRatedPlatformGames = games
+        .filter(game => game.platform.toLowerCase() === platform && game.rating)
+        .sort((a, b) => parseFloat(b.rating || 0) - parseFloat(a.rating || 0))
+        .slice(0, 12);
+
+    displayGames(topRatedPlatformGames, container.parentElement);
+}
+
+/* =========================
    UTILITY: GET GENRE ICON
 ========================= */
 function getGenreIcon(genre) {
@@ -234,18 +331,16 @@ function downloadGame(id) {
         return;
     }
 
-    // Show download modal with all options
-    if (typeof showDownloadModal === 'function') {
-        try {
-            showDownloadModal(game);
-        } catch (error) {
-            console.error('Error showing download modal:', error);
-            showNotification('Could not open download dialog. Please try again.', 'error');
-        }
-    } else {
-        // Fallback to download page if modal function not available
-        window.location.href = `./Pages/Download.html?id=${encodeURIComponent(id)}`;
+    // Redirect to Download page - handles both root and Pages folder contexts
+    const currentPath = window.location.pathname;
+    let downloadPath = './Pages/Download.html';
+
+    // If already in Pages folder, use relative path
+    if (currentPath.includes('/Pages/')) {
+        downloadPath = './Download.html';
     }
+
+    window.location.href = `${downloadPath}?id=${encodeURIComponent(id)}`;
 }
 
 /* =========================
