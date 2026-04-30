@@ -1,0 +1,574 @@
+/* ================= ROOT VARIABLES ================= */
+:root {
+    --primary-color: #00ffcc;
+    --primary-dark: #00e6b8;
+    --primary-light: #33ffdd;
+    --secondary-color: #ffcc00;
+    --gta-blue: #3366ff;
+    --gta-gold: #ffd700;
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #151515;
+    --bg-tertiary: #1a1a1a;
+    --text-primary: #ffffff;
+    --text-secondary: #aaa;
+    --text-tertiary: #ccc;
+    --accent-color: #ff6b6b;
+    --success-color: #51cf66;
+    --border-radius: 12px;
+    --border-radius-sm: 8px;
+    --border-radius-lg: 20px;
+    --transition-speed: 0.3s;
+    --transition-smooth: 0.6s;
+    --shadow-sm: 0 2px 8px rgba(0, 255, 204, 0.1);
+    --shadow-md: 0 4px 16px rgba(0, 255, 204, 0.15);
+    --shadow-lg: 0 8px 32px rgba(0, 255, 204, 0.2);
+}
+
+/* ================= GLOBAL STYLES ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: linear-gradient(135deg, var(--bg-primary) 0%, #0f0f0f 100%);
+    background-attachment: fixed;
+    color: var(--text-primary);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+body.gta-page {
+    background: linear-gradient(135deg, #1a0a0a 0%, #0f0505 100%);
+}
+
+/* ================= CONTAINER ================= */
+.container {
+    width: 92%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+/* ================= HEADER ================= */
+header {
+    background: linear-gradient(135deg, #111 0%, #1a1a1a 100%);
+    padding: 14px 0;
+    border-bottom: 2px solid rgba(51, 102, 255, 0.25);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 92%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    flex-shrink: 0;
+}
+
+.logo img {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    transition: all var(--transition-speed) ease;
+    border: 2.5px solid var(--gta-blue);
+    box-shadow: 0 4px 12px rgba(51, 102, 255, 0.3);
+}
+
+.logo img:hover {
+    transform: scale(1.12) rotate(-8deg);
+    box-shadow: 0 8px 24px rgba(51, 102, 255, 0.5);
+}
+
+.logo a {
+    display: inline-block;
+    text-decoration: none;
+}
+
+nav {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 28px;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 14px;
+    border-radius: 8px;
+    transition: all var(--transition-speed) ease;
+    position: relative;
+    display: inline-block;
+    letter-spacing: 0.5px;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--gta-blue);
+    transition: all var(--transition-speed) ease;
+    transform: translateX(-50%);
+}
+
+.nav-links a:hover {
+    color: var(--gta-blue);
+    background: rgba(51, 102, 255, 0.08);
+}
+
+.nav-links a:hover::after {
+    width: 80%;
+}
+
+.nav-links a.active {
+    color: var(--gta-blue);
+    background: rgba(51, 102, 255, 0.12);
+}
+
+.nav-links a.active::after {
+    width: 80%;
+}
+
+/* ================= GTA DOWNLOAD SECTION ================= */
+.gta-download {
+    background: linear-gradient(135deg, rgba(51, 102, 255, 0.12) 0%, rgba(255, 215, 0, 0.08) 100%);
+    padding: 60px 30px;
+    text-align: center;
+    border: 2px solid rgba(51, 102, 255, 0.3);
+    border-radius: var(--border-radius-lg);
+    margin: 30px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.gta-download::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(51, 102, 255, 0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: pulse-gta 4s ease-in-out infinite;
+}
+
+.gta-download::after {
+    content: '';
+    position: absolute;
+    bottom: -50%;
+    left: -50%;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: pulse-gta 5s ease-in-out infinite reverse;
+}
+
+@keyframes pulse-gta {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.gta-download h2 {
+    font-size: 52px;
+    font-weight: 900;
+    color: var(--gta-blue);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 0 4px 10px rgba(51, 102, 255, 0.4);
+    position: relative;
+    z-index: 2;
+}
+
+.gta-download p.notice {
+    font-size: 18px;
+    color: var(--gta-gold);
+    position: relative;
+    z-index: 2;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+#timer {
+    color: var(--gta-red);
+    font-weight: 900;
+    font-size: 24px;
+}
+
+/* ================= AD SLOT ================= */
+.ad-slot {
+    background: linear-gradient(135deg, rgba(21, 21, 21, 0.8) 0%, rgba(26, 26, 26, 0.8) 100%);
+    border: 2px dashed rgba(51, 102, 255, 0.2);
+    border-radius: var(--border-radius-lg);
+    padding: 40px;
+    text-align: center;
+    margin: 40px 0;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ad-slot p {
+    color: var(--text-secondary);
+    font-size: 16px;
+    margin: 0;
+}
+
+/* ================= DOWNLOAD GRID ================= */
+.download-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin: 40px 0;
+}
+
+/* ================= DOWNLOAD CARD ================= */
+.download-card {
+    background: linear-gradient(135deg, rgba(21, 21, 21, 0.95) 0%, rgba(26, 26, 26, 0.95) 100%);
+    backdrop-filter: blur(20px);
+    padding: 32px;
+    border-radius: 20px;
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    border: 2px solid rgba(51, 102, 255, 0.25);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    cursor: pointer;
+}
+
+.download-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(51, 102, 255, 0.2), transparent);
+    transition: left 0.8s ease;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.download-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 20px 60px rgba(51, 102, 255, 0.35);
+    border-color: rgba(51, 102, 255, 0.6);
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.98) 0%, rgba(31, 31, 31, 0.98) 100%);
+}
+
+.download-card:hover::before {
+    left: 100%;
+}
+
+.download-card * {
+    position: relative;
+    z-index: 2;
+}
+
+.download-card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--gta-blue);
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-shadow: 0 2px 8px rgba(51, 102, 255, 0.3);
+}
+
+.download-card .subtitle {
+    font-size: 12px;
+    color: var(--gta-gold);
+    margin: 0;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.download-card p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin: 10px 0;
+    line-height: 1.6;
+}
+
+/* ================= INFO ROW ================= */
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-top: 1px solid rgba(51, 102, 255, 0.15);
+    border-bottom: 1px solid rgba(51, 102, 255, 0.15);
+}
+
+.info-label {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.info-value {
+    font-size: 13px;
+    color: var(--gta-gold);
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/* ================= BUTTON STYLES ================= */
+.btn {
+    display: inline-block;
+    padding: 14px 24px;
+    background: linear-gradient(135deg, var(--gta-blue) 0%, #0052cc 100%);
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: var(--border-radius-lg);
+    font-weight: 700;
+    font-size: 13px;
+    transition: all var(--transition-speed) ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 8px 20px rgba(51, 102, 255, 0.3);
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+}
+
+.btn:hover:not(.disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(51, 102, 255, 0.5);
+}
+
+.btn.disabled {
+    background: linear-gradient(135deg, rgba(51, 102, 255, 0.5) 0%, rgba(0, 82, 204, 0.5) 100%);
+    cursor: not-allowed;
+    opacity: 0.6;
+    box-shadow: 0 8px 20px rgba(51, 102, 255, 0.15);
+}
+
+.btn.disabled:hover {
+    transform: none;
+}
+
+/* ================= INSTALLATION STEPS ================= */
+.installation-steps {
+    background: linear-gradient(135deg, rgba(51, 102, 255, 0.08) 0%, rgba(255, 215, 0, 0.04) 100%);
+    padding: 50px 30px;
+    border-radius: var(--border-radius-lg);
+    border: 2px solid rgba(51, 102, 255, 0.2);
+    margin: 40px 0;
+}
+
+.installation-steps h2 {
+    font-size: 36px;
+    color: var(--gta-blue);
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+    text-shadow: 0 4px 10px rgba(51, 102, 255, 0.3);
+}
+
+.installation-steps ol {
+    list-style: none;
+    counter-reset: steps;
+    margin: 0;
+    padding: 0;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.installation-steps ol li {
+    list-style: none;
+    counter-increment: steps;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    margin-bottom: 25px;
+    padding: 0;
+}
+
+.installation-steps ol li::before {
+    content: counter(steps);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--gta-blue) 0%, #0052cc 100%);
+    color: #ffffff;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 18px;
+    flex-shrink: 0;
+    box-shadow: 0 6px 16px rgba(51, 102, 255, 0.3);
+}
+
+.installation-steps ol li p {
+    color: var(--text-secondary);
+    font-size: 15px;
+    margin: 0;
+    padding: 12px 16px;
+    background: rgba(51, 102, 255, 0.1);
+    border-left: 3px solid var(--gta-blue);
+    border-radius: 8px;
+}
+
+/* ================= RESPONSIVE DESIGN ================= */
+@media (max-width: 768px) {
+    .gta-download h2 {
+        font-size: 36px;
+    }
+
+    .download-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .installation-steps h2 {
+        font-size: 28px;
+    }
+
+    .nav-links {
+        gap: 16px;
+    }
+
+    .nav-links a {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+
+    header {
+        padding: 10px 0;
+    }
+
+    .logo img {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 95%;
+    }
+
+    .gta-download {
+        padding: 40px 20px;
+    }
+
+    .gta-download h2 {
+        font-size: 28px;
+        margin-bottom: 15px;
+    }
+
+    .gta-download p.notice {
+        font-size: 14px;
+    }
+
+    .download-card {
+        padding: 24px;
+    }
+
+    .download-card h3 {
+        font-size: 16px;
+    }
+
+    .download-grid {
+        gap: 20px;
+    }
+
+    .installation-steps {
+        padding: 30px 20px;
+    }
+
+    .installation-steps h2 {
+        font-size: 22px;
+    }
+
+    .ad-slot {
+        padding: 30px 15px;
+        min-height: 100px;
+    }
+
+    .ad-slot p {
+        font-size: 14px;
+    }
+}
+
+/* ================= ANIMATIONS ================= */
+@keyframes glow-pulse {
+    0%, 100% {
+        box-shadow: 0 8px 20px rgba(51, 102, 255, 0.2);
+    }
+    50% {
+        box-shadow: 0 8px 30px rgba(51, 102, 255, 0.5);
+    }
+}
+
+.download-card {
+    animation: glow-pulse 3s ease-in-out infinite;
+}
+
+/* ================= UTILITY CLASSES ================= */
+.text-center {
+    text-align: center;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+.p-20 {
+    padding: 20px;
+}
