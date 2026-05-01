@@ -317,6 +317,12 @@ nav {
     margin-top: 40px;
 }
 
+/* When premium card is shown, it should span full width */
+#download-list .premium-game-card {
+    grid-column: 1 / -1;
+    max-width: 100%;
+}
+
 /* Download Card */
 .download-card {
     background: linear-gradient(135deg, rgba(21, 21, 21, 0.9) 0%, rgba(26, 26, 26, 0.9) 100%);
@@ -595,6 +601,289 @@ nav {
     border-radius: 8px;
 }
 
+/* ================= PREMIUM GAME CARD (DETAILED VIEW) ================= */
+.premium-game-card {
+    background: linear-gradient(135deg, rgba(21, 21, 21, 0.95) 0%, rgba(26, 26, 26, 0.95) 100%);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    border: 2px solid rgba(0, 255, 204, 0.3);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.game-card-wrapper {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.game-card-header {
+    display: flex;
+    gap: 24px;
+    padding: 32px;
+    background: linear-gradient(135deg, rgba(0, 255, 204, 0.05) 0%, rgba(255, 204, 0, 0.02) 100%);
+    border-bottom: 2px solid rgba(0, 255, 204, 0.2);
+    align-items: flex-start;
+}
+
+.game-card-image {
+    width: 140px;
+    height: 140px;
+    border-radius: 16px;
+    object-fit: cover;
+    border: 3px solid var(--primary-color);
+    box-shadow: 0 12px 32px rgba(0, 255, 204, 0.25);
+    flex-shrink: 0;
+    transition: all var(--transition-speed) ease;
+}
+
+.game-card-image:hover {
+    transform: scale(1.08) rotate(-3deg);
+    box-shadow: 0 16px 40px rgba(0, 255, 204, 0.35);
+}
+
+.game-card-info {
+    flex: 1;
+    padding: 8px 0;
+}
+
+.game-card-info h2 {
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--primary-light);
+    margin: 0 0 12px 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.game-card-platform {
+    font-size: 14px;
+    color: var(--secondary-color);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.game-card-body {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.game-stats {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding: 16px;
+    background: rgba(0, 255, 204, 0.08);
+    border-radius: 12px;
+    border: 1px solid rgba(0, 255, 204, 0.15);
+}
+
+.game-stats span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--text-primary);
+    font-weight: 600;
+    padding: 8px 12px;
+    background: rgba(0, 255, 204, 0.1);
+    border-radius: 8px;
+}
+
+.game-card-body h3 {
+    font-size: 18px;
+    color: var(--primary-light);
+    margin: 12px 0 0 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+.game-description {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin: 0;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    border-left: 3px solid var(--primary-color);
+}
+
+/* ================= DOWNLOAD OPTIONS (BUTTONS) ================= */
+.download-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.download-option-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    color: var(--bg-primary);
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    box-shadow: 0 8px 24px rgba(0, 255, 204, 0.3);
+    border: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.download-option-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s ease;
+}
+
+.download-option-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(0, 255, 204, 0.4);
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-color) 100%);
+}
+
+.download-option-btn:hover::before {
+    left: 100%;
+}
+
+.download-option-btn:active {
+    transform: translateY(-1px);
+}
+
+.option-name {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.option-arrow {
+    font-size: 18px;
+    font-weight: 900;
+    transition: transform var(--transition-speed) ease;
+}
+
+.download-option-btn:hover .option-arrow {
+    transform: translateX(4px);
+}
+
+.safety-note {
+    padding: 14px 16px;
+    background: rgba(255, 107, 107, 0.12);
+    border: 1px solid rgba(255, 107, 107, 0.3);
+    border-radius: 10px;
+    color: #ff9999;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* ================= DOWNLOAD CARD (REGULAR VIEW) ================= */
+.download-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+    margin: -28px -28px 12px -28px;
+}
+
+.download-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+}
+
+.download-info h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--primary-light);
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.download-info p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin: 0;
+    padding: 6px 0;
+}
+
+.download-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: auto;
+}
+
+.download-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 16px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    color: var(--bg-primary);
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 6px 18px rgba(0, 255, 204, 0.25);
+    border: none;
+    gap: 6px;
+}
+
+.download-link::after {
+    content: '→';
+    font-weight: 900;
+    font-size: 14px;
+}
+
+.download-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(0, 255, 204, 0.35);
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-color) 100%);
+}
+
+.download-link:active {
+    transform: translateY(0);
+}
+
 /* ================= FOOTER ================= */
 footer {
     background: linear-gradient(135deg, #0f0f0f 0%, #0a0a0a 100%);
@@ -634,6 +923,22 @@ footer {
 }
 
 /* ================= RESPONSIVE DESIGN ================= */
+@media (max-width: 1024px) {
+    .game-card-header {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .game-card-image {
+        width: 120px;
+        height: 120px;
+    }
+
+    .game-card-info h2 {
+        font-size: 24px;
+    }
+}
+
 @media (max-width: 768px) {
     .page-hero h1 {
         font-size: 36px;
@@ -677,6 +982,30 @@ footer {
     .footer-links {
         justify-content: center;
     }
+
+    .game-card-header {
+        padding: 20px;
+        gap: 16px;
+    }
+
+    .game-card-image {
+        width: 100px;
+        height: 100px;
+    }
+
+    .game-card-info h2 {
+        font-size: 20px;
+    }
+
+    .game-card-body {
+        padding: 20px;
+        gap: 16px;
+    }
+
+    .download-option-btn {
+        padding: 14px 16px;
+        font-size: 13px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -700,5 +1029,61 @@ footer {
     .nav-links a {
         font-size: 12px;
         padding: 8px 10px;
+    }
+
+    .premium-game-card {
+        border-radius: 16px;
+    }
+
+    .game-card-header {
+        flex-direction: column;
+        padding: 16px;
+        gap: 12px;
+    }
+
+    .game-card-image {
+        width: 100%;
+        height: auto;
+        max-height: 200px;
+    }
+
+    .game-card-info h2 {
+        font-size: 18px;
+        margin-bottom: 8px;
+    }
+
+    .game-card-body {
+        padding: 16px;
+        gap: 12px;
+    }
+
+    .game-stats {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .game-stats span {
+        justify-content: flex-start;
+    }
+
+    .download-options {
+        gap: 10px;
+    }
+
+    .download-option-btn {
+        padding: 12px 14px;
+        font-size: 12px;
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
+
+    .option-arrow {
+        order: -1;
+    }
+
+    .download-link {
+        padding: 10px 12px;
+        font-size: 11px;
     }
 }
