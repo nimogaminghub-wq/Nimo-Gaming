@@ -2,9 +2,11 @@
 
 > A modern, responsive gaming platform for downloading Android, PPSSPP, PS2, and GTA games with a sleek dark UI and intuitive navigation.
 
+🌐 **[Visit Nimo's Gaming](https://nimogaminghub-wq.github.io/)** - Live Site
+
 [![GitHub License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Platform Support](https://img.shields.io/badge/platforms-Android%20%7C%20PPSSPP%20%7C%20PS2%20%7C%20GTA-brightgreen)](README.md)
-[![Last Updated](https://img.shields.io/badge/last%20updated-April%202026-blue)](README.md)
+[![Last Updated](https://img.shields.io/badge/last%20updated-May%202026-blue)](README.md)
 
 ---
 
